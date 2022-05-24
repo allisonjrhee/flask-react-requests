@@ -23,6 +23,10 @@ def create_app():
     # Initialize extensions
     # To use the application instances above, instantiate with an application:
     db.init_app(app)
+
+    # with app.app_context():
+    #     db.create_all()
+
     migrate.init_app(app, db)
     ma.init_app(app)
     cors.init_app(app)

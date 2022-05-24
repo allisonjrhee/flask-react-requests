@@ -3,11 +3,11 @@ import APIService from '../Components/APIService'
 
 
 const Form = (props) => {
-    const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
+    const [noun1, setNoun1] = useState('')
+    const [noun2, setNoun2] = useState('')
 
     const insertArticle = () =>{
-      APIService.InsertArticle({title,body})
+      APIService.InsertArticle({noun1,noun2})
       .then((response) => props.insertedArticle(response))
       .catch(error => console.log('error',error))
     }
@@ -15,8 +15,8 @@ const Form = (props) => {
     const handleSubmit=(event)=>{ 
       event.preventDefault()
       insertArticle()
-      setTitle('')
-      setBody('')
+      setNoun1('')
+      setNoun2('')
     }
 
   return (
@@ -24,31 +24,29 @@ const Form = (props) => {
 
         <form onSubmit = {handleSubmit} >
 
-          <label htmlFor="title" className="form-label">Title</label>
+          <label htmlFor="noun1" className="form-label">Noun1</label>
           <input 
           type="text"
           className="form-control" 
-          placeholder ="Enter title"
-          value={title}
-          onChange={(e)=>setTitle(e.target.value)}
+          placeholder ="Enter Noun 1"
+          value={noun1}
+          onChange={(e)=>setNoun1(e.target.value)}
           required
           />
 
-          <label htmlFor="body" className="form-label">Body</label>
-          <textarea 
+          <label htmlFor="noun2" className="form-label">Noun2</label>
+          <input 
           className="form-control" 
-          placeholder ="Enter body" 
-          rows='6'
-          value={body}
-          onChange={(e)=>setBody(e.target.value)}
+          placeholder ="Enter Noun 2" 
+          value={noun2}
+          onChange={(e)=>setNoun2(e.target.value)}
           required
-          >
-          </textarea>
+          />
 
           <button 
           className="btn btn-primary mt-2"
           >
-          Publish article</button>
+          Generate Joke</button>
           
         </form>
               

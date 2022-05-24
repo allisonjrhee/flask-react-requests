@@ -18,12 +18,12 @@ def articles():
 
 @app.route("/add", methods=["POST"], strict_slashes=False)
 def add_articles():
-	title = request.json['title']
-	body = request.json['body']
+	noun1 = request.json['noun1']
+	noun2 = request.json['noun2']
 
 	article = Articles(
-		title=title,
-		body=body
+		noun1=noun1,
+		noun2=noun2
 		)
 
 	db.session.add(article)
